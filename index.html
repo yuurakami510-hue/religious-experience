@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宗教的経験と宗教的生活について</title>
+    <style>
+        /* みすず書房の公式Webにある「細線と余白」の美学を再現 */
+        body {
+            margin: 0;
+            padding: 60px 20px;
+            background-color: #f2f0eb; /* 淡いシックなグレー背景 */
+            color: #222222;
+            font-family: "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 画面中央に美しく佇む、純白のコンテナ --- */
+        .main-container {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 60px 60px;
+            box-sizing: border-box;
+        }
+
+        /* --- 1. タイトルエリア --- */
+        header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .site-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #1a1a1a;
+            margin: 0 0 15px 0;
+            font-family: "Yu Mincho", "游明朝", serif; /* タイトルは端正な明朝体 */
+        }
+
+        .site-subtitle {
+            font-size: 0.95em;
+            color: #444444;
+            font-style: italic;
+            margin-bottom: 5px;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- 2. メタ情報エリア（左下に日付、右上に著者名） --- */
+        .meta-info-area {
+            display: flex;
+            justify-content: space-between; /* 左右の両端に綺麗に振り分ける */
+            align-items: flex-end;
+            font-size: 0.85em;
+            color: #555555;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #e6e2db; /* 境界線 */
+            padding-bottom: 15px;
+        }
+
+        .write-date {
+            font-family: "Times New Roman", "Yu Mincho", serif;
+            letter-spacing: 0.05em;
+        }
+
+        .author-name-group {
+            text-align: right;
+        }
+
+        .author-alpha {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            margin-left: 10px;
+            color: #888888;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- 3. 序文エリア --- */
+        .introduction-section {
+            font-family: "Yu Mincho", "游明朝", serif;
+            font-size: 1.0em;
+            line-height: 2.4;
+            color: #2b2b2b;
+            margin-bottom: 70px;
+            display: flex;
+            justify-content: center; /* 横方向の中央に寄せる */
+        }
+
+        /* 2行の文章を包む透明なインナーボックス */
+        .intro-inner {
+            text-align: left;        /* 2行の文頭（左端）はピシッと綺麗に揃える */
+            display: inline-block;   /* 文字の長さに合わせて自动で幅を縮める */
+        }
+
+        .introduction-section p {
+            margin-top: 0;
+            margin-bottom: 0;
+            text-indent: 0;
+        }
+
+        /* --- 4. 目次エリア --- */
+        .contents-section {
+            background-color: #faf9f6; /* ごく淡いベージュの書目エリア */
+            border: 1px solid #e6e2db;  /* 繊細な細枠 */
+            padding: 40px 45px;
+        }
+
+        .contents-title {
+            font-size: 1.0em;
+            font-weight: bold;
+            color: #1a1a1a;
+            letter-spacing: 0.2em;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 8px;
+            text-align: left;
+        }
+
+        .contents-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 章タイトルの共通デザイン */
+        .chapter-title {
+            font-family: "Yu Mincho", "游明朝", serif;
+            font-size: 1.0em;
+            font-weight: bold;
+            color: #1a1a1a;
+            padding: 15px 0 5px 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* コラムを並べる子リスト（少し右に下げる） */
+        .column-sub-list {
+            list-style: none;
+            padding-left: 20px;
+            margin: 0 0 15px 0;
+        }
+
+        .contents-item {
+            border-bottom: 1px dashed #e6e2db; /* 上品な点線区切り */
+            padding: 12px 0;
+            font-size: 0.95em;
+        }
+
+        .contents-item:last-child {
+            border-bottom: none;
+        }
+
+        /* リンクのデザイン */
+        .contents-list a {
+            text-decoration: none;
+            display: block;
+            font-family: "Yu Mincho", "游明朝", serif;
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        /* コラム用リンクの色（深めのグレー） */
+        .contents-item a {
+            color: #333333;
+        }
+
+        /* 見出しリンクのデザイン（太字・明朝体） */
+        .book-link a {
+            color: #1a1a1a;
+            font-weight: bold;
+            padding: 15px 0 15px 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* マウスを乗せたときに、みすずブルーに変わり、じんわり右に動く上品なエフェクト */
+        .contents-list a:hover {
+            color: #0044bb;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 画面中央の白い箱 -->
+    <div class="main-container">
+
+        <!-- 1. メインタイトル -->
+        <header>
+            <h1 class="site-title">宗教的経験と宗教的生活について</h1>
+            <div class="site-subtitle">The Religious Experience and Religious Life</div>
+        </header>
+
+        <!-- 2. 左下に日付、右上に著者名 -->
+        <div class="meta-info-area">
+            <div class="write-date">2026年10月</div>
+            <div class="author-name-group">
+                <span class="author-ja">浦上 佑</span>
+                <span class="author-alpha">Yu Urakami</span>
+            </div>
+        </div>
+
+        <!-- 3. 序文 -->
+        <section class="introduction-section">
+            <div class="intro-inner">
+                <p>これは、これまでの私の個人的な宗教的経験の記録と</p>
+                <p>これからの宗教的生活についての記録です。</p>
+            </div>
+        </section>
+
+        <!-- 4. 目次 -->
+        <section class="contents-section">
+            <div class="contents-title">目次</div>
+            <ul class="contents-list">
+                
+                <!-- ■ 第一章 -->
+                <li class="chapter-title">第一章 宗教的経験の記録</li>
+                <li>
+                    <ul class="column-sub-list">
+                        <li class="contents-item">
+                            <a href="chapter1_1.html">1.  人生録</a>
+                        </li>
+                        <li class="contents-item">
+                            <a href="chapter1_2.html">2. 　24歳頃の神秘体験</a>
+                        </li>
+                        <li class="contents-item">
+                            <a href="chapter1_3.html">3. 　26歳頃〜28歳頃　うつ病の記録</a>
+                        
+                    </ul>
+                </li>
+
+                <!-- ■ 第二章 -->
+                <li class="chapter-title">第二章 宗教的生活について</li>
+                <li>
+                    <ul class="column-sub-list">
+                        <li class="contents-item">
+                            <a href="chapter2_1.html">1. 祖母について</a>
+                        </li>
+                        <li class="contents-item">
+                            <a href="chapter2_2.html">2. 2度生まれにいたる道</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- ■ 所感（第二章のすぐ下に移動しました） -->
+                <li class="chapter-title" style="padding-top: 15px; border-top: 1px solid #ebdcd0;">コラム</li>
+                <li>
+                    <ul class="column-sub-list">
+                        <li class="contents-item">
+                            <a href="opinion1.html">1. 生きる意味について</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- ■ これまでに読んってきた本の記録（最下部に移動し、全体の土台としました） -->
+                <li class="book-link" style="padding-top: 20px; border-top: 1px solid #ebdcd0;">
+                    <a href="bibliography.html">これまでに読んできた本の記録</a>
+                </li>
+
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
